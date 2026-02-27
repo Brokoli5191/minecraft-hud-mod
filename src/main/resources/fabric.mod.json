@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "vapehud",
+  "version": "1.0.0",
+  "name": "VapeHUD",
+  "description": "Vape V4 style HUD overlay",
+  "entrypoints": {
+    "client": ["com.vapehud.VapeHudMod"]
+  },
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric-api": "*",
+    "minecraft": "1.21.1"
+  }
+}
