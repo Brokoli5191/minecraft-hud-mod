@@ -13,7 +13,7 @@ public class KeyBindings {
             "key.vapehud.toggle",
             InputUtil.Type.KEYSYM,
             GLFW.GLFW_KEY_RIGHT_SHIFT,
-            "key.categories.misc"
+            KeyBinding.MISC_CATEGORY
         ));
     }
 }
