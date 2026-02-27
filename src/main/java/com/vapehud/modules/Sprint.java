@@ -2,7 +2,7 @@ package com.vapehud.modules;
 
 import net.minecraft.client.MinecraftClient;
 
-public class Sprint extends Module {
+public class Sprint extends ModuleBase {
     public Sprint() { super("Sprint", "Combat"); }
 
     @Override

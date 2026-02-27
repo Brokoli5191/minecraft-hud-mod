@@ -3,7 +3,7 @@ package com.vapehud;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
-import com.vapehud.modules.Module;
+import com.vapehud.modules.ModuleBase;
 import java.util.*;
 
 public class HudRenderer {
@@ -30,8 +30,8 @@ public class HudRenderer {
             MinecraftClient client = MinecraftClient.getInstance();
             if (client.options.hudHidden) return;
 
-            Map<String, List<Module>> byCategory = new LinkedHashMap<>();
-            for (Module m : ModuleManager.getModules()) {
+            Map<String, List<ModuleBase>> byCategory = new LinkedHashMap<>();
+            for (ModuleBase m : ModuleManager.getModules()) {
                 byCategory.computeIfAbsent(m.getCategory(), k -> new ArrayList<>()).add(m);
             }
 
@@ -39,9 +39,9 @@ public class HudRenderer {
             int startY = 10;
             int col = 0;
 
-            for (Map.Entry<String, List<Module>> entry : byCategory.entrySet()) {
+            for (Map.Entry<String, List<ModuleBase>> entry : byCategory.entrySet()) {
                 String cat = entry.getKey();
-                List<Module> mods = entry.getValue();
+                List<ModuleBase> mods = entry.getValue();
                 int x = startX + col * (COL_W + PAD);
                 int y = startY;
 
@@ -54,7 +54,7 @@ public class HudRenderer {
                 context.fill(x + 3, y + HEADER, x + COL_W, y + HEADER + 1, ACCENT_COLOR);
 
                 int mY = y + HEADER + 2;
-                for (Module m : mods) {
+                for (ModuleBase m : mods) {
                     if (m.isEnabled()) {
                         context.fill(x + 3, mY, x + COL_W, mY + COL_H - 1, ENABLED_BG);
                         drawText(context, client, m.getName(), x + 8, mY + 4, TEXT_COLOR);

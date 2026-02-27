@@ -8,7 +8,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 
-public class Scaffold extends Module {
+public class Scaffold extends ModuleBase {
     public Scaffold() { super("Scaffold", "World"); }
 
     @Override
@@ -22,17 +22,18 @@ public class Scaffold extends Module {
         int slot = -1;
         for (int i = 0; i < 9; i++) {
             if (mc.player.getInventory().getStack(i).getItem() instanceof BlockItem) {
-                slot = i; break;
+                slot = i;
+                break;
             }
         }
         if (slot == -1) return;
 
-        int prev = mc.player.getInventory().selectedSlot;
-        mc.player.getInventory().selectedSlot = slot;
+        int prev = mc.player.getInventory().getSelectedSlot();
+        mc.player.getInventory().setSelectedSlot(slot);
         BlockHitResult hit = new BlockHitResult(
             Vec3d.ofCenter(below), Direction.UP, below, false
         );
         mc.interactionManager.interactBlock(mc.player, Hand.MAIN_HAND, hit);
-        mc.player.getInventory().selectedSlot = prev;
+        mc.player.getInventory().setSelectedSlot(prev);
     }
 }

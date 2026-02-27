@@ -3,7 +3,7 @@ package com.vapehud.modules;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 
-public class NoFall extends Module {
+public class NoFall extends ModuleBase {
     public NoFall() { super("NoFall", "Combat"); }
 
     @Override

@@ -1,26 +1,26 @@
 package com.vapehud;
 
-import com.vapehud.modules.*;
+import com.vapehud.modules.ModuleBase;
 import java.util.*;
 
 public class ModuleManager {
-    private static final List<Module> modules = new ArrayList<>();
+    private static final List<ModuleBase> modules = new ArrayList<>();
 
     public static void init() {
-        modules.add(new KillAura());
-        modules.add(new Sprint());
-        modules.add(new NoFall());
-        modules.add(new Scaffold());
-        modules.add(new Speed());
+        modules.add(new com.vapehud.modules.KillAura());
+        modules.add(new com.vapehud.modules.Sprint());
+        modules.add(new com.vapehud.modules.NoFall());
+        modules.add(new com.vapehud.modules.Scaffold());
+        modules.add(new com.vapehud.modules.Speed());
     }
 
-    public static List<Module> getModules() { return modules; }
+    public static List<ModuleBase> getModules() { return modules; }
 
-    public static List<Module> getEnabled() {
-        return modules.stream().filter(Module::isEnabled).toList();
+    public static List<ModuleBase> getEnabled() {
+        return modules.stream().filter(ModuleBase::isEnabled).toList();
     }
 
-    public static Module getByName(String name) {
+    public static ModuleBase getByName(String name) {
         return modules.stream()
             .filter(m -> m.getName().equalsIgnoreCase(name))
             .findFirst().orElse(null);

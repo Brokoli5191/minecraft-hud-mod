@@ -4,7 +4,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 
-public class Speed extends Module {
+public class Speed extends ModuleBase {
     public Speed() { super("Speed", "Movement"); }
 
     @Override
